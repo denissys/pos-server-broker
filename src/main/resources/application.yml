@@ -1,0 +1,70 @@
+spring:
+  profiles:
+    active: development
+
+#spring-boot endpoints
+endpoints:
+  enabled: true
+  info:
+    enabled: true
+  health:
+    sensitive: false
+
+#security
+security:
+  basic:
+    enabled: false
+  user:
+    name: denissys
+    password: 
+
+#server
+server:
+  port: 8082
+  undertow:
+      worker-threads: 10
+
+#management
+management:
+  port: 8092
+  addressContract: 127.0.0.1
+  security:
+    enabled: false
+
+#swagger
+swagger:
+  config:
+    apiInfo:
+      title: Broker API
+      description: 
+      version: '@project.version@'
+      termsOfServiceUrl: MIT License
+      contact:
+        name: Denis Santos
+        url: https://github.com/denissys
+        email: denissys@gmail.om
+      license: MIT
+      licenseUrl: https://pt.wikipedia.org/wiki/Licen%C3%A7a_MIT
+
+#application
+pos:
+  state:
+    ttl:
+      timeInMinutes: 5
+    
+---
+############################################################################
+# D E V E L O P M E N T
+############################################################################
+spring:
+  profiles: development
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    maxTotal: 10
+    maxIdle: 5
+    minIdle: 1
+    testOnBorrow: true
+    testOnReturn: true
+    testWhileIdle: true
